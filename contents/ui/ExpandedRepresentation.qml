@@ -75,22 +75,23 @@ MouseArea {
                     id: song
                     width: parent.width
                     opacity: 0.9
-                    height: root.artist ? parent.height / 2 : parent.height
+                    //height: root.artist ? parent.height / 2 : parent.height
+                    height: parent.height
 
                     elide: Text.ElideRight
                     text: root.track ? root.track : ""
                 }
 
-                PlasmaComponents.Label {
-                    visible: !!root.artist
-                    id: artist
-                    width: parent.width
-                    opacity: 0.7
-                    height: parent.height / 2
+                // PlasmaComponents.Label {
+                //     visible: !!root.artist
+                //     id: artist
+                //     width: parent.width
+                //     opacity: 0.7
+                //     height: parent.height / 2
                     
-                    elide: Text.ElideRight
-                    text: root.artist ? root.artist : ""
-                }
+                //     elide: Text.ElideRight
+                //     text: root.artist ? root.artist : ""
+                // }
             }
 
             Column {
