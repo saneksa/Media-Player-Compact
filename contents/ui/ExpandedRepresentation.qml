@@ -67,34 +67,6 @@ MouseArea {
             height: parent.height
 
             Column {
-                Layout.fillWidth: true
-                Layout.fillHeight: true
-                visible: !root.noPlayer
-
-                PlasmaComponents.Label {
-                    id: song
-                    width: parent.width
-                    opacity: 0.9
-                    //height: root.artist ? parent.height / 2 : parent.height
-                    height: parent.height
-
-                    elide: Text.ElideRight
-                    text: root.track ? root.track : ""
-                }
-
-                // PlasmaComponents.Label {
-                //     visible: !!root.artist
-                //     id: artist
-                //     width: parent.width
-                //     opacity: 0.7
-                //     height: parent.height / 2
-                    
-                //     elide: Text.ElideRight
-                //     text: root.artist ? root.artist : ""
-                // }
-            }
-
-            Column {
                 id: playerControls
                 property bool enabled: !root.noPlayer && mpris2Source.data[mpris2Source.current].CanControl
                 visible: !root.noPlayer
@@ -157,6 +129,33 @@ MouseArea {
                         onClicked: {
                             root.exec(plasmoid.configuration.startPlayerCmd+"&")
                         }
+                    }
+                }
+            }
+            Column {
+                Layout.fillWidth: true
+                Layout.fillHeight: true
+                width: parent.width
+                visible: !root.noPlayer
+
+                Row {
+                    spacing: 2
+                    height: parent.height
+                    visible: root.track
+                    width: parent.width
+
+                    Text {
+                        text: root.track
+                        visible: root.track
+                        color: "white"
+                        opacity: 1
+                    }
+
+                    Text {
+                        text: "(" + root.artist + ")"
+                        visible: root.artist
+                        color: "white"
+                        opacity: 0.6
                     }
                 }
             }
