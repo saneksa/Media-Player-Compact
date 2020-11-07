@@ -75,18 +75,19 @@ MouseArea {
                     id: song
                     width: parent.width
                     opacity: 0.9
-                    height: parent.height / 2
+                    height: root.artist ? parent.height / 2 : parent.height
 
                     elide: Text.ElideRight
-                    text: root.track ? root.track : i18n("No media playing")
+                    text: root.track ? root.track : ""
                 }
 
                 PlasmaComponents.Label {
+                    visible: !!root.artist
                     id: artist
                     width: parent.width
                     opacity: 0.7
                     height: parent.height / 2
-
+                    
                     elide: Text.ElideRight
                     text: root.artist ? root.artist : ""
                 }
